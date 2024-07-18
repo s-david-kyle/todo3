@@ -1,29 +1,19 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-
-interface Todo {
-  id: number;
-  title: string;
-  userId: number;
-  completed: boolean;
-}
+import useTodos from "./hooks/useTodos";
 
 const TodoList = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
-  const [error, setError] = useState('');
+  const { data: todos, error, isLoading } = useTodos();
 
-  useEffect(() => {
-    axios
-      .get('https://jsonplaceholder.typicode.com/todos')
-      .then((res) => setTodos(res.data))
-      .catch((error) => setError(error));
-  }, []);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-  if (error) return <p>{error}</p>;
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
     <ul className="list-group">
-      {todos.map((todo) => (
+      {todos?.map((todo) => (
         <li key={todo.id} className="list-group-item">
           {todo.title}
         </li>
