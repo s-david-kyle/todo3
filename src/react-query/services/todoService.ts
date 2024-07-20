@@ -7,4 +7,4 @@ export interface Todo {
   completed: boolean;
 }
 
-export const todoService = new APIClient<Todo>("/todos");
+export default new APIClient<Todo>("/todos");
