@@ -1,6 +1,6 @@
 import { ReactNode, useReducer } from "react";
-import TasksContext from "./contexts/tasksContext";
-import tasksReducer from "./reducers/tasksReducer";
+import tasksReducer from "./tasksReducer";
+import TasksContext from "./tasksContext";
 
 interface Props {
   children: ReactNode;
