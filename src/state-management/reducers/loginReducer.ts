@@ -11,7 +11,7 @@ interface LogoutAction {
   type: "LOGOUT";
 }
 
-type LoginAction = LiginAction | LogoutAction;
+export type LoginAction = LiginAction | LogoutAction;
 
 const loginReducer = (state: string, action: LoginAction): string => {
   if (action.type === "LOGIN") {
